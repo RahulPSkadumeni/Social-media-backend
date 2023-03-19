@@ -7,6 +7,8 @@ const morgan = require("morgan");
 const userRoute = require("./routes/users");
 
 const authRoute = require("./routes/auth");
+
+const postRoute = require("./routes/posts");
 dotenv.config();
 // mongoose.set("strictQuery", true);
 mongoose.connect(
@@ -26,8 +28,9 @@ app.use(morgan("common"));
 app.use("/api/users", userRoute); //whenever comes to this address it run useRoutes
 
 app.use("/api/auth", authRoute);
-// app.get("/", (req, res) => {
-//   res.send("homepage");
+app.use("/api/posts", postRoute);
+// app.get("/api/posts", (req, res) => {
+//   res.send("post page");
 // });
 
 app.listen(7000, () => {
